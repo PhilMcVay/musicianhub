@@ -67,4 +67,50 @@ router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, re
     .catch(error => res.status(404).json(error))
 })
 
+// @route    POST api/posts/like/:post_id
+// @desc     Like a post
+// @access   Private
+router.post('/like/:post_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Profile.findOne({ user: req.user.id })
+    .then(profile => {
+      Post.findById(req.params.post_id)
+        .then(post => {
+          // Check to see if user has already liked the post
+          if (post.likes.find(like => like.user.toString() === req.user.id) !== undefined) {
+            return res.status(401).json({ alreadyLiked: 'Already liked this post' })
+          }
+          // Add user to the likes array and save to the DB
+          post.likes.unshift({ user: req.user.id })
+          post.save().then(post => res.json(post))
+        })
+        .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
+    })
+    .catch(error => res.status(404).json(error))
+})
+
+// @route    POST api/posts/unlike/:post_id
+// @desc     Unlike a post
+// @access   Private
+router.post('/unlike/:post_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+  Profile.findOne({ user: req.user.id })
+    .then(profile => {
+      Post.findById(req.params.post_id)
+        .then(post => {
+          // Check to see if user has already liked the post
+          if (post.likes.find(like => like.user.toString() === req.user.id) === undefined) {
+            return res.status(401).json({ notLiked: 'You have not liked this post' })
+          }
+          // Get remove index
+          const removeIndex = post.likes
+            .map(like => like.user.toString())
+            .indexOf(req.user.id)
+          // Remove from the like array and save to the DB
+          post.likes.splice(removeIndex, 1)
+          post.save().then(post => res.json(post))
+        })
+        .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
+    })
+    .catch(error => res.status(404).json(error))
+})
+
 module.exports = router
