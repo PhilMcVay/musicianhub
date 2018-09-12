@@ -1,0 +1,38 @@
+.landing-container {
+  min-height: calc(100vh + 21px);
+  margin-top: -111px;
+  background-image: url('../../images/musicianhub-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+.landing-image-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #2c3e50;
+  background: -moz-linear-gradient(-45deg, #2c3e50 0%, #2980b9 100%);
+  background: -webkit-linear-gradient(-45deg, #2c3e50 0%,#2980b9 100%);
+  background: linear-gradient(135deg, #2c3e50 0%,#2980b9 100%);
+  opacity: 0.9;
+}
+
+.landing-text {
+  position: relative;
+  z-index: 2;
+  padding: 20px 20px;
+}
+
+.landing-text h1 {
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+}

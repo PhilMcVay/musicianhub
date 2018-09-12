@@ -1,0 +1,32 @@
+.navbar-container {
+  padding: 20px 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+a {
+  color: white;
+  transition: 0.15s ease-in-out;
+}
+
+a:hover {
+  color: #0099F7;
+}
+
+.main-nav {
+  padding: 0;
+}
+
+.main-nav li {
+  display: inline-block;
+  padding: 0 0.7em;
+  font-weight: 300;
+}
+
+.main-nav li:last-of-type {
+  padding-right: 0;
+}
