@@ -1,27 +1,28 @@
 import React, { Component } from 'react'
+import { Link, withRouter } from 'react-router-dom'
 import '../../styles/global/styles.css'
 import '../../styles/components/Navbar.css'
 
-class Navbar extends Component  {
+class Navbar extends Component {
   render() {
     return (
-      <div className="navbar-container max-width">
-        <header>
+      <div className={"navbar-container " + (this.props.location.pathname !== '/' && "nav-dark-bg")}>
+        <header className="max-width">
           <div className="logo">
-            <a href="#">
+            <Link to="/">
               <span className="logo-blue">M</span><span>usician</span><span className="logo-blue">H</span><span>ub</span>
-            </a>
+            </Link>
           </div>
           <nav>
             <ul className="main-nav">
               <li>
-                <a href="#">View Musicians</a>
+                <Link to="/profiles">View Musicians</Link>
               </li>
               <li>
-                <a href="#" className="button button-blue">Login</a>
+                <Link to="/login" className="button button-blue">Login</Link>
               </li>
               <li>
-                <a href="#" className="button button-white">Sign Up</a>
+                <Link to="/register" className="button button-white">Sign Up</Link>
               </li>
             </ul>
           </nav>
@@ -31,4 +32,4 @@ class Navbar extends Component  {
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)
