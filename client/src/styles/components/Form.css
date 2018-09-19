@@ -50,6 +50,17 @@ input {
   outline: none;
 }
 
+.input-error {
+  border-color: red;
+}
+
+.input-error-message {
+  display: block;
+  color: red;
+  font-style: normal;
+  margin-top: 2px;
+}
+
 small {
   color: #555;
   font-style: italic;

@@ -1,4 +1,8 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { registerUser } from '../../actions/authAction'
+import axios from 'axios'
 import '../../styles/components/Form.css'
 
 class Register extends Component {
@@ -22,15 +26,17 @@ class Register extends Component {
       password: this.state.password,
       confirmPassword: this.state.confirmPassword
     }
-    console.log(newUser)
+    this.props.registerUser(newUser)
   }
 
   render() {
+    const { errors } = this.state
+
     return (
       <div className="register-container max-width-form">
         <div className="form-container">
           <div className="form-inner">
-            <form id="register-form" action="" onSubmit={this.handleSubmit}>
+            <form id="register-form" action="" onSubmit={this.handleSubmit} noValidate>
               <h1 className="form-header">Create an Account</h1>
               <div className="form-body">
                 <div>
@@ -41,7 +47,9 @@ class Register extends Component {
                     value={this.state.name}
                     name="name"
                     autoComplete="off"
+                    className={ errors.name && "input-error" }
                   />
+                  { errors.name && <small className="input-error-message">{ errors.name }</small> }
                 </div>
                 <div>
                   <label>Email</label>
@@ -51,7 +59,9 @@ class Register extends Component {
                     value={this.state.email}
                     name="email"
                     autoComplete="off"
+                    className={ errors.email && "input-error" }
                   />
+                  { errors.email && <small className="input-error-message">{ errors.email }</small> }
                   <small>Please use <a href="https://en.gravatar.com/" target="_blank" rel="noopener noreferrer" tabIndex="-1">Gravatar</a> email for profile image</small>
                 </div>
                 <div>
@@ -62,7 +72,9 @@ class Register extends Component {
                     value={this.state.password}
                     name="password"
                     autoComplete="off"
+                    className={ errors.password && "input-error" }
                   />
+                  { errors.password && <small className="input-error-message">{ errors.password }</small> }
                 </div>
                 <div>
                   <label>Confirm Password</label>
@@ -72,7 +84,9 @@ class Register extends Component {
                     value={this.state.confirmPassword}
                     name="confirmPassword"
                     autoComplete="off"
+                    className={ errors.confirmPassword && "input-error" }
                   />
+                  { errors.confirmPassword && <small className="input-error-message">{ errors.confirmPassword }</small> }
                 </div>
               </div>
               <button className="button button-darkblue" type="submit">Create</button>
@@ -84,4 +98,16 @@ class Register extends Component {
   }
 }
 
-export default Register
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
+
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(Register)
