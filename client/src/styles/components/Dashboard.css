@@ -1,0 +1,19 @@
+.dashboard-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.dashboard-header {
+  color: #2c3e50;
+}
+
+.spinner-container {
+  min-height: calc(100vh - 98px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  max-width: 200px;
+}

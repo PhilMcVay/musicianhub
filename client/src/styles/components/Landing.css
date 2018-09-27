@@ -33,6 +33,17 @@
 
 .landing-text h1 {
   color: white;
+  font-size: 2.2em;
   text-align: center;
   text-transform: uppercase;
+}
+
+.tag-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tag {
+  font-size: 1.5em;
 }
