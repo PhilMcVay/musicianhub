@@ -10,32 +10,29 @@ class Dashboard extends Component {
     this.props.getCurrentProfile()
   }
 
-  renderDashboard = () => {
+  renderDashboard = (profile) => {
     const { user } = this.props.auth
-    const { profile, isLoading } = this.props.profile
     const firstName = user.name.split(' ')[0]
 
-    if (profile === null || isLoading) {
-      return <Spinner />
+    if (Object.keys(profile).length > 0) {
+      return <h4>TODO: DISPLAY PROFILE</h4>
     } else {
-      if (Object.keys(profile).length > 0) {
-        return <h4>TODO: DISPLAY PROFILE</h4>
-      } else {
-        // User is logged in but has not created a profile
-        return (
-          <React.Fragment>
-            <h1 className="dashboard-header">Welcome {firstName}!</h1>
-            <Link to="/create-profile" className="button button-blue inline-block">Create your Profile</Link>
-          </React.Fragment>
-        )
-      }
+      // User is logged in but has not created a profile
+      return (
+        <React.Fragment>
+          <h1 className="dashboard-header">Welcome {firstName}!</h1>
+          <Link to="/create-profile" className="button button-blue inline-block">Create your Profile</Link>
+        </React.Fragment>
+      )
     }
   }
 
   render() {
+    const { profile, isLoading } = this.props.profile
+
     return (
       <div className="dashboard-container">
-        { this.renderDashboard() }
+        { profile === null || isLoading ? <Spinner /> : this.renderDashboard(profile) }
       </div>
     )
   }

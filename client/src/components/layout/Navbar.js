@@ -52,7 +52,7 @@ class Navbar extends Component {
     )
 
     return (
-      <div className={"navbar-container " + (this.props.location.pathname !== '/' && "nav-dark-bg")}>
+      <div className={"navbar-container " + (this.props.location.pathname !== '/' ? "nav-dark-bg" : "")}>
         <header className="max-width">
           <div className="logo">
             <Link to="/">
