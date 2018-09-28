@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import TagsInput from 'react-tagsinput'
 import { connect } from 'react-redux'
 
 class CreateProfile extends Component {
@@ -18,8 +19,8 @@ class CreateProfile extends Component {
     availableToGig: '',
     lookingForBand: null,
     lookingForBandmates: null,
-    instruments: '',
-    genres: '',
+    instruments: [],
+    genres: [],
     facebook: '',
     twitter: '',
     youtube: '',
@@ -30,6 +31,14 @@ class CreateProfile extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
+  }
+
+  handleInstrumentsTagChange = (tags) => {
+    this.setState({ instruments: tags })
+  }
+
+  handleGenresTagChange = (tags) => {
+    this.setState({ genres: tags })
   }
 
   handleSubmit = (e) => {
@@ -88,22 +97,20 @@ class CreateProfile extends Component {
                 </div>
                 <div className="grid-full-width">
                   <label>Instruments</label>
-                  <input
-                    onChange={this.handleChange}
-                    type="text"
+                  <TagsInput
+                    onChange={this.handleInstrumentsTagChange}
                     value={this.state.instruments}
                     name="instruments"
-                    autoComplete="off"
+                    inputProps={{ placeholder: 'Add an Instrument' }}
                   />
                 </div>
                 <div className="grid-full-width">
                   <label>Genres</label>
-                  <input
-                    onChange={this.handleChange}
-                    type="text"
+                  <TagsInput
+                    onChange={this.handleGenresTagChange}
                     value={this.state.genres}
                     name="genres"
-                    autoComplete="off"
+                    inputProps={{ placeholder: 'Add a Genre' }}
                   />
                 </div>
               </div>
