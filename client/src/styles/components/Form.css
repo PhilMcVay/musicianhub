@@ -1,9 +1,4 @@
-.register-container {
-  margin-top: 30px;
-  padding: 20px 20px;
-}
-
-.login-container {
+.register-container, .login-container, .create-profile-container {
   margin-top: 30px;
   padding: 20px 20px;
 }
@@ -32,6 +27,10 @@
   grid-gap: 20px 15px;
 }
 
+.grid-full-width {
+  grid-column: 1 / 3;
+}
+
 label {
   display: inline-block;
   color: #555;
@@ -48,6 +47,24 @@ input {
   border-radius: 4px;
   background-color: #f9fafa;
   padding: .75rem 1rem;
+  outline: none;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  color: #2c3e50;
+  box-sizing: border-box;
+  border: 1px solid #d4d9dd;
+  border-radius: 4px;
+  background-color: #f9fafa;
+  padding: .75rem 1rem;
+  background-image: url('../../images/arrow-down.svg');
+  background-size: 1.4rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  cursor: pointer;
   outline: none;
 }
 
