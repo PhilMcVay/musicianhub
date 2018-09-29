@@ -1,5 +1,6 @@
 .register-container, .login-container, .create-profile-container {
   margin-top: 30px;
+  margin-bottom: 30px;
   padding: 20px 20px;
 }
 
@@ -50,6 +51,31 @@ input {
   outline: none;
 }
 
+textarea {
+  display: block;
+  line-height: 1.5em;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 100px;
+  color: #2c3e50;
+  border: 1px solid #d4d9dd;
+  border-radius: 4px;
+  background-color: #f9fafa;
+  padding: 1rem 1rem;
+  outline: none;
+}
+
+.checkbox {
+  display: inline-block;
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.checkbox-label {
+  margin-bottom: 0;
+}
+
 .form-select {
   appearance: none;
   display: block;
@@ -66,6 +92,54 @@ input {
   background-position: calc(100% - 1rem) center;
   cursor: pointer;
   outline: none;
+}
+
+.social-input-website {
+  background-image: url('../../images/website.svg');
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  padding-right: 3em;
+}
+
+.social-input-facebook {
+  background-image: url('../../images/facebook.svg');
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  padding-right: 3em;
+}
+
+.social-input-twitter {
+  background-image: url('../../images/twitter.svg');
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  padding-right: 3em;
+}
+
+.social-input-youtube {
+  background-image: url('../../images/youtube.svg');
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  padding-right: 3em;
+}
+
+.social-input-soundcloud {
+  background-image: url('../../images/soundcloud.svg');
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  padding-right: 3em;
+}
+
+.social-input-bandcamp {
+  background-image: url('../../images/bandcamp.svg');
+  background-size: 1.2rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 1rem) center;
+  padding-right: 3em;
 }
 
 .react-tagsinput {
@@ -89,7 +163,6 @@ input {
   font-size: 0.7em;
   margin-right: 5px;
   padding: 10px;
-  text-transform: none;
 }
 
 .react-tagsinput-remove {
@@ -134,7 +207,7 @@ small a {
   text-decoration: underline;
 }
 
-input:focus {
+input:focus, textarea:focus {
   border-color: #2c3e50;
 }
 

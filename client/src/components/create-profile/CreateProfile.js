@@ -10,23 +10,23 @@ class CreateProfile extends Component {
     age: '',
     gender: '',
     location: '',
-    website: '',
     bio: '',
-    recordingExperience: '',
     yearsPlayedMusic: '',
     gigsPlayed: '',
     availableToRehearse: '',
     availableToGig: '',
-    lookingForBand: null,
-    lookingForBandmates: null,
+    recordingExperience: false,
+    lookingForBand: false,
+    lookingForBandmates: false,
     instruments: [],
     genres: [],
+    website: '',
     facebook: '',
     twitter: '',
     youtube: '',
     soundcloud: '',
     bandcamp: '',
-    errors: {}
+    errors: {} // TODO: Set up error logic for website and social media inputs
   }
 
   handleChange = (e) => {
@@ -41,13 +41,92 @@ class CreateProfile extends Component {
     this.setState({ genres: tags })
   }
 
+  handleCheckboxChange = (e) => {
+    this.setState({ [e.target.name]: e.target.checked })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault()
     console.log(this.state)
   }
 
+  toggleSocialInputs = () => {
+    this.setState(prevState => ({ displaySocialInputs: !prevState.displaySocialInputs }))
+  }
+
+  renderSocialInputs = () => (
+    <React.Fragment>
+      <div>
+        <label>Website</label>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          value={this.state.website}
+          name="website"
+          autoComplete="off"
+          className="social-input-website"
+        />
+      </div>
+      <div>
+        <label>Facebook</label>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          value={this.state.facebook}
+          name="facebook"
+          autoComplete="off"
+          className="social-input-facebook"
+        />
+      </div>
+      <div>
+        <label>Twitter</label>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          value={this.state.twitter}
+          name="twitter"
+          autoComplete="off"
+          className="social-input-twitter"
+        />
+      </div>
+      <div>
+        <label>YouTube</label>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          value={this.state.youtube}
+          name="youtube"
+          autoComplete="off"
+          className="social-input-youtube"
+        />
+      </div>
+      <div>
+        <label>SoundCloud</label>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          value={this.state.soundcloud}
+          name="soundcloud"
+          autoComplete="off"
+          className="social-input-soundcloud"
+        />
+      </div>
+      <div>
+        <label>Bandcamp</label>
+        <input
+          onChange={this.handleChange}
+          type="text"
+          value={this.state.bandcamp}
+          name="bandcamp"
+          autoComplete="off"
+          className="social-input-bandcamp"
+        />
+      </div>
+    </React.Fragment>
+  )
+
   render() {
-    const { errors } = this.state
+    const { errors, displaySocialInputs } = this.state
 
     return (
       <div className="create-profile-container max-width-form">
@@ -58,14 +137,16 @@ class CreateProfile extends Component {
               <small>* = required fields</small>
               <div className="form-body">
                 <div>
-                  <label>* Handle</label>
+                  <label>Handle *</label>
                   <input
                     onChange={this.handleChange}
                     type="text"
                     value={this.state.handle}
                     name="handle"
                     autoComplete="off"
+                    className={ errors.handle && "input-error" }
                   />
+                  { errors.handle && <small className="input-error-message">{ errors.handle }</small> }
                 </div>
                 <div>
                   <label>Age</label>
@@ -95,6 +176,51 @@ class CreateProfile extends Component {
                     autoComplete="off"
                   />
                 </div>
+                <div>
+                  <label>Years Played Music</label>
+                  <select className="form-select" value={this.state.yearsPlayedMusic} onChange={this.handleChange} name="yearsPlayedMusic">
+                    <option value=""></option>
+                    <option value="1 Year">1 Year</option>
+                    <option value="1-5 Years">1-5 Years</option>
+                    <option value="5-10 Years">5-10 Years</option>
+                    <option value="10+ Years">10+ Years</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Gigs played</label>
+                  <select className="form-select" value={this.state.gigsPlayed} onChange={this.handleChange} name="gigsPlayed">
+                    <option value=""></option>
+                    <option value="None">None</option>
+                    <option value="1-100">1-100</option>
+                    <option value="100+">100+</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Available To Rehearse</label>
+                  <select className="form-select" value={this.state.availableToRehearse} onChange={this.handleChange} name="availableToRehearse">
+                    <option value=""></option>
+                    <option value="Once a week">Once a week</option>
+                    <option value="Twice a week">Twice a week</option>
+                    <option value="3 times a week">3 times a week</option>
+                    <option value="4 times a week">4 times a week</option>
+                    <option value="5 times a week">5 times a week</option>
+                    <option value="6 times a week">6 times a week</option>
+                    <option value="7 times a week">7 times a week</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Available To Gig</label>
+                  <select className="form-select" value={this.state.availableToGig} onChange={this.handleChange} name="availableToGig">
+                    <option value=""></option>
+                    <option value="Once a week">Once a week</option>
+                    <option value="Twice a week">Twice a week</option>
+                    <option value="3 times a week">3 times a week</option>
+                    <option value="4 times a week">4 times a week</option>
+                    <option value="5 times a week">5 times a week</option>
+                    <option value="6 times a week">6 times a week</option>
+                    <option value="7 times a week">7 times a week</option>
+                  </select>
+                </div>
                 <div className="grid-full-width">
                   <label>Instruments</label>
                   <TagsInput
@@ -113,6 +239,48 @@ class CreateProfile extends Component {
                     inputProps={{ placeholder: 'Add a Genre' }}
                   />
                 </div>
+                <div className="grid-full-width">
+                  <label>Bio</label>
+                  <textarea
+                    onChange={this.handleChange}
+                    value={this.state.bio}
+                    name="bio"
+                  />
+                </div>
+                <div className="grid-full-width">
+                  <input
+                    onChange={this.handleCheckboxChange}
+                    type="checkbox"
+                    checked={this.state.recordingExperience}
+                    name="recordingExperience"
+                    className="checkbox"
+                  />
+                  <label className="checkbox-label">Recording Experience</label>
+                </div>
+                <div className="grid-full-width">
+                  <input
+                    onChange={this.handleCheckboxChange}
+                    type="checkbox"
+                    checked={this.state.lookingForBand}
+                    name="lookingForBand"
+                    className="checkbox"
+                  />
+                  <label className="checkbox-label">Looking For Band</label>
+                </div>
+                <div className="grid-full-width">
+                  <input
+                    onChange={this.handleCheckboxChange}
+                    type="checkbox"
+                    checked={this.state.lookingForBandmates}
+                    name="lookingForBandmates"
+                    className="checkbox"
+                  />
+                  <label className="checkbox-label">Looking For Bandmates</label>
+                </div>
+                <div className="grid-full-width">
+                  <button className="button button-blue" onClick={this.toggleSocialInputs}>Add social links</button>
+                </div>
+                { displaySocialInputs && this.renderSocialInputs() }
               </div>
               <button className="button button-darkblue" type="submit">Create</button>
             </form>

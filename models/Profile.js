@@ -13,7 +13,7 @@ const ProfileSchema = new Schema({
   location: { type: String },
   website: { type: String },
   bio: { type: String },
-  recordingExperience: { type: String },
+  recordingExperience: { type: Boolean },
   yearsPlayedMusic: { type: String },
   gigsPlayed: { type: String },
   availableToRehearse: { type: String },
