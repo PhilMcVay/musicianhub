@@ -104,16 +104,8 @@ router.post('/', passport.authenticate('jwt', { session: false }),  (req, res) =
   if (req.body.availableToGig) profileFields.availableToGig = req.body.availableToGig
   if (req.body.lookingForBand) profileFields.lookingForBand = req.body.lookingForBand
   if (req.body.lookingForBandmates) profileFields.lookingForBandmates = req.body.lookingForBandmates
-
-  // Instruments - Split into an Array
-  if (typeof req.body.instruments !== undefined) {
-    profileFields.instruments = req.body.instruments.split(',')
-  }
-
-  // Genres - Split into an Array
-  if (typeof req.body.genres !== undefined) {
-    profileFields.genres = req.body.genres.split(',')
-  }
+  if (req.body.instruments) profileFields.instruments = req.body.instruments
+  if (req.body.genres) profileFields.genres = req.body.genres
 
   // Social
   profileFields.social = {}

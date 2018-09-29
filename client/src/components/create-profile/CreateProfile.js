@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import TagsInput from 'react-tagsinput'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { createProfile } from '../../actions/profileActions'
 
 class CreateProfile extends Component {
   state = {
@@ -26,7 +28,13 @@ class CreateProfile extends Component {
     youtube: '',
     soundcloud: '',
     bandcamp: '',
-    errors: {} // TODO: Set up error logic for website and social media inputs
+    errors: {}
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors })
+    }
   }
 
   handleChange = (e) => {
@@ -47,83 +55,115 @@ class CreateProfile extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
+    const profileData = {
+      handle: this.state.handle,
+      age: this.state.age,
+      gender: this.state.gender,
+      location: this.state.location,
+      bio: this.state.bio,
+      yearsPlayedMusic: this.state.yearsPlayedMusic,
+      gigsPlayed: this.state.gigsPlayed,
+      availableToRehearse: this.state.availableToRehearse,
+      availableToGig: this.state.availableToGig,
+      recordingExperience: this.state.recordingExperience,
+      lookingForBand: this.state.lookingForBand,
+      lookingForBandmates: this.state.lookingForBandmates,
+      instruments: this.state.instruments,
+      genres: this.state.genres,
+      website: this.state.website,
+      facebook: this.state.facebook,
+      twitter: this.state.twitter,
+      youtube: this.state.youtube,
+      soundcloud: this.state.soundcloud,
+      bandcamp: this.state.bandcamp
+    }
+    this.props.createProfile(profileData, this.props.history)
   }
 
   toggleSocialInputs = () => {
     this.setState(prevState => ({ displaySocialInputs: !prevState.displaySocialInputs }))
   }
 
-  renderSocialInputs = () => (
-    <React.Fragment>
-      <div>
-        <label>Website</label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          value={this.state.website}
-          name="website"
-          autoComplete="off"
-          className="social-input-website"
-        />
-      </div>
-      <div>
-        <label>Facebook</label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          value={this.state.facebook}
-          name="facebook"
-          autoComplete="off"
-          className="social-input-facebook"
-        />
-      </div>
-      <div>
-        <label>Twitter</label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          value={this.state.twitter}
-          name="twitter"
-          autoComplete="off"
-          className="social-input-twitter"
-        />
-      </div>
-      <div>
-        <label>YouTube</label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          value={this.state.youtube}
-          name="youtube"
-          autoComplete="off"
-          className="social-input-youtube"
-        />
-      </div>
-      <div>
-        <label>SoundCloud</label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          value={this.state.soundcloud}
-          name="soundcloud"
-          autoComplete="off"
-          className="social-input-soundcloud"
-        />
-      </div>
-      <div>
-        <label>Bandcamp</label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          value={this.state.bandcamp}
-          name="bandcamp"
-          autoComplete="off"
-          className="social-input-bandcamp"
-        />
-      </div>
-    </React.Fragment>
-  )
+  renderSocialInputs = () => {
+    const { errors } = this.state
+
+    return (
+      <React.Fragment>
+        <div>
+          <label>Website</label>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            value={this.state.website}
+            name="website"
+            autoComplete="off"
+            className={"social-input-website " + ( errors.website ? "input-error" : "" ) }
+          />
+          { errors.website && <small className="input-error-message">{ errors.website }</small> }
+        </div>
+        <div>
+          <label>Facebook</label>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            value={this.state.facebook}
+            name="facebook"
+            autoComplete="off"
+            className={"social-input-facebook " + ( errors.facebook ? "input-error" : "" ) }
+          />
+          { errors.facebook && <small className="input-error-message">{ errors.facebook }</small> }
+        </div>
+        <div>
+          <label>Twitter</label>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            value={this.state.twitter}
+            name="twitter"
+            autoComplete="off"
+            className={"social-input-twitter " + ( errors.twitter ? "input-error" : "" ) }
+          />
+          { errors.twitter && <small className="input-error-message">{ errors.twitter }</small> }
+        </div>
+        <div>
+          <label>YouTube</label>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            value={this.state.youtube}
+            name="youtube"
+            autoComplete="off"
+            className={"social-input-youtube " + ( errors.youtube ? "input-error" : "" ) }
+          />
+          { errors.youtube && <small className="input-error-message">{ errors.youtube }</small> }
+        </div>
+        <div>
+          <label>SoundCloud</label>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            value={this.state.soundcloud}
+            name="soundcloud"
+            autoComplete="off"
+            className={"social-input-soundcloud " + ( errors.soundcloud ? "input-error" : "" ) }
+          />
+          { errors.soundcloud && <small className="input-error-message">{ errors.soundcloud }</small> }
+        </div>
+        <div>
+          <label>Bandcamp</label>
+          <input
+            onChange={this.handleChange}
+            type="text"
+            value={this.state.bandcamp}
+            name="bandcamp"
+            autoComplete="off"
+            className={"social-input-bandcamp " + ( errors.bandcamp ? "input-error" : "" ) }
+          />
+          { errors.bandcamp && <small className="input-error-message">{ errors.bandcamp }</small> }
+        </div>
+      </React.Fragment>
+    )
+  }
 
   render() {
     const { errors, displaySocialInputs } = this.state
@@ -278,7 +318,7 @@ class CreateProfile extends Component {
                   <label className="checkbox-label">Looking For Bandmates</label>
                 </div>
                 <div className="grid-full-width">
-                  <button className="button button-blue" onClick={this.toggleSocialInputs}>Add social links</button>
+                  <button type="button" className="button button-blue" onClick={this.toggleSocialInputs}>Add social links</button>
                 </div>
                 { displaySocialInputs && this.renderSocialInputs() }
               </div>
@@ -293,7 +333,8 @@ class CreateProfile extends Component {
 
 CreateProfile.propTypes = {
   profile: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  errors: PropTypes.object.isRequired,
+  createProfile: PropTypes.func.isRequired
 }
 
 const mapStateToProps = (state) => ({
@@ -301,4 +342,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors
 })
 
-export default connect(mapStateToProps)(CreateProfile)
+export default connect(mapStateToProps, { createProfile })(withRouter(CreateProfile))
