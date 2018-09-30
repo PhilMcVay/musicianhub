@@ -211,6 +211,10 @@ input:focus, textarea:focus {
   border-color: #2c3e50;
 }
 
+input:disabled {
+  opacity: 0.5;
+}
+
 button {
   width: 100%;
   cursor: pointer;
