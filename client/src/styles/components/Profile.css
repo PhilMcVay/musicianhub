@@ -1,0 +1,124 @@
+.profiles-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px 20px;
+}
+
+.profiles-header {
+  color: #2c3e50;
+  text-align: center;
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
+  margin: 50px 0;
+}
+
+.profile-item-container {
+  background-color: white;
+  box-shadow: 0 1px 4px 0 rgba(85,85,85,.3);
+  box-sizing: border-box;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-item-image:hover .profile-item-overlay {
+  opacity: 0.2;
+}
+
+.profile-item-image {
+  position: relative;
+  font-size: 0;
+}
+
+.profile-item-image img {
+  width: 100%;
+}
+
+.profile-item-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #2980b9;
+  background: -moz-linear-gradient(top, #2980b9 0%, #2980b9 50%, #2c3e50 100%);
+  background: -webkit-linear-gradient(top, #2980b9 0%,#2980b9 50%,#2c3e50 100%);
+  background: linear-gradient(to bottom, #2980b9 0%,#2980b9 50%,#2c3e50 100%);
+  opacity: 0.7;
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-item-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 10px;
+}
+
+.profile-item-info h4, .profile-item-info h5 {
+  color: white;
+  margin: 5px 0;
+}
+
+.profile-item-info h4 {
+  font-size: 14px;
+}
+
+.profile-item-info h5 {
+  font-style: italic;
+  font-size: 12px;
+}
+
+.profile-item-buttons {
+  padding: 7px;
+  display: flex;
+  position: relative;
+}
+
+.profile-button {
+  width: auto;
+  display: inline-block;
+  background-color: #2c3e50;
+  color: white;
+  box-sizing: border-box;
+  border: none;
+  padding: 7px 10px;
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 100;
+  cursor: pointer;
+}
+
+.profile-button:nth-of-type(1) {
+  margin-right: 5px;
+}
+
+.profile-item-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 1;
+  background-color: #2c3e50;
+  padding: 7px;
+  box-shadow: 0 1px 4px 0 rgba(85,85,85,.3);
+  transition: all 0.3s ease-in-out;
+}
+
+.profile-item-dropdown span {
+  width: auto;
+  margin: 1px;
+  display: inline-block;
+  background-color: white;
+  color: #2c3e50;
+  box-sizing: border-box;
+  border: none;
+  padding: 7px 10px;
+  text-transform: none;
+  font-size: 14px;
+  font-weight: 100;
+  cursor: pointer;
+}

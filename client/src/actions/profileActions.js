@@ -1,4 +1,11 @@
-import { GET_PROFILE, PROFILE_LOADING, CLEAR_CURRENT_PROFILE, GET_ERRORS, SET_CURRENT_USER } from './types'
+import {
+  GET_PROFILE,
+  PROFILE_LOADING,
+  CLEAR_CURRENT_PROFILE,
+  GET_PROFILES,
+  GET_ERRORS,
+  SET_CURRENT_USER
+} from './types'
 import axios from 'axios'
 
 // Get current profile
@@ -37,6 +44,31 @@ export const createProfile = (profileData, history) => dispatch => {
         payload: error.response.data
       })
     })
+}
+
+// Get profiles
+export function getProfiles() {
+  const loadingDelay = delay => new Promise(resolve => { setTimeout(resolve, delay) });
+
+  return async (dispatch) => {
+    dispatch(setProfileLoading())
+    // Fake loading for 0.7 seconds before axios call
+    await loadingDelay(700)
+    await axios
+      .get('/api/profile/all')
+      .then(res => {
+        dispatch({
+          type: GET_PROFILES,
+          payload: res.data
+        })
+      })
+      .catch(() => {
+        dispatch({
+          type: GET_PROFILES,
+          payload: null
+        })
+      })
+  }
 }
 
 // Delete Account
