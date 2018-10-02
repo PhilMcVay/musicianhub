@@ -97,15 +97,17 @@ router.post('/', passport.authenticate('jwt', { session: false }),  (req, res) =
   if (req.body.location) profileFields.location = req.body.location
   if (req.body.website) profileFields.website = req.body.website
   if (req.body.bio) profileFields.bio = req.body.bio
-  if (req.body.recordingExperience) profileFields.recordingExperience = req.body.recordingExperience
   if (req.body.yearsPlayedMusic) profileFields.yearsPlayedMusic = req.body.yearsPlayedMusic
   if (req.body.gigsPlayed) profileFields.gigsPlayed = req.body.gigsPlayed
   if (req.body.availableToRehearse) profileFields.availableToRehearse = req.body.availableToRehearse
   if (req.body.availableToGig) profileFields.availableToGig = req.body.availableToGig
-  if (req.body.lookingForBand) profileFields.lookingForBand = req.body.lookingForBand
-  if (req.body.lookingForBandmates) profileFields.lookingForBandmates = req.body.lookingForBandmates
   if (req.body.instruments) profileFields.instruments = req.body.instruments
   if (req.body.genres) profileFields.genres = req.body.genres
+
+  // Boolean fields
+  profileFields.recordingExperience = req.body.recordingExperience
+  profileFields.lookingForBand = req.body.lookingForBand
+  profileFields.lookingForBandmates = req.body.lookingForBandmates
 
   // Social
   profileFields.social = {}

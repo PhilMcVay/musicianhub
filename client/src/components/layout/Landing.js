@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../../styles/global/styles.css'
 import '../../styles/components/Landing.css'
 
-class Landing extends Component  {
+class Landing extends Component {
   render() {
     return (
       <div className="landing-container">
