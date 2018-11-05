@@ -4,10 +4,19 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { logoutUser } from '../../actions/authActions'
 import { clearCurrentProfile } from '../../actions/profileActions'
+import '../../styles/global/hamburgers.min.css'
 import '../../styles/global/styles.css'
 import '../../styles/components/Navbar.css'
 
 class Navbar extends Component {
+  state = {
+    mobileMenuActive: false
+  }
+
+  toggleMobileMenu = () => {
+    this.setState(prevState => ({ mobileMenuActive: !prevState.mobileMenuActive }))
+  }
+
   handleLogout = (e) => {
     e.preventDefault()
     this.props.clearCurrentProfile()
@@ -59,6 +68,15 @@ class Navbar extends Component {
               <span className="logo-blue">M</span><span>usician</span><span className="logo-blue">H</span><span>ub</span>
             </Link>
           </div>
+          <button
+            className={"hamburger hamburger--vortex " + (this.state.mobileMenuActive ? "is-active" : "")}
+            type="button"
+            onClick={this.toggleMobileMenu}
+          >
+            <span className="hamburger-box">
+              <span className="hamburger-inner"></span>
+            </span>
+          </button>
           <nav>
             { isAuthenticated ? authLinks : guestLinks }
           </nav>

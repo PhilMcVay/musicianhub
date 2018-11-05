@@ -105,3 +105,35 @@ span {
   border-color: #D75452;
   color: white;
 }
+
+.hamburger {
+  display: none;
+  width: auto;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  background-color: white;
+  height: 2px;
+}
+
+.hamburger.is-active
+.hamburger-inner,
+.hamburger.is-active
+.hamburger-inner:after,
+.hamburger.is-active
+.hamburger-inner:before {
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+
+  nav {
+    display: none;
+  }
+
+  .hamburger {
+    display: inline-block;
+    padding: 0.7em 0;
+  }
+
+}
