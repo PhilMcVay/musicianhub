@@ -33,6 +33,31 @@ export function getCurrentProfile() {
   }
 }
 
+// Get profile by handle
+export function getProfileByHandle(handle) {
+  const loadingDelay = delay => new Promise(resolve => { setTimeout(resolve, delay) });
+
+  return async (dispatch) => {
+    dispatch(setProfileLoading())
+    // Fake loading for 0.7 seconds before axios call
+    await loadingDelay(700)
+    await axios
+      .get(`/api/profile/handle/${handle}`)
+      .then(res => {
+        dispatch({
+          type: GET_PROFILE,
+          payload: res.data
+        })
+      })
+      .catch(() => {
+        dispatch({
+          type: GET_PROFILE,
+          payload: null
+        })
+      })
+  }
+}
+
 // Create profile
 export const createProfile = (profileData, history) => dispatch => {
   axios
