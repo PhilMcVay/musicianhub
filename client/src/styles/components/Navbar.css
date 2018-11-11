@@ -1,5 +1,7 @@
 .navbar-container {
   padding: 20px 20px;
+  position: relative;
+  z-index: 1;
 }
 
 header {

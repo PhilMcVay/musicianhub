@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../../styles/components/ProfileHeader.css'
 
 class ProfileHeader extends Component {
   render() {
@@ -6,7 +7,12 @@ class ProfileHeader extends Component {
 
     return (
       <div className="profile-header-container">
-        <h1>TODO: PROFILE HEADER</h1>
+        <div className="profile-header-overlay"></div>
+        <div className="profile-header-info">
+          <img className="profile-image" src={profile.user.avatar} alt={profile.name}/>
+          <h1>{profile.user.name}</h1>
+          <h2>{profile.location}</h2>
+        </div>
       </div>
     )
   }

@@ -127,7 +127,7 @@ span {
 
 @media (max-width: 768px) {
 
-  nav {
+  .desktop-nav {
     display: none;
   }
 

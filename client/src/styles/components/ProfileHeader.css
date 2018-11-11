@@ -1,0 +1,25 @@
+.profile-header-container {
+  position: relative;
+  font-size: 0;
+  box-shadow: 0 1px 4px 0 rgba(85,85,85,.3);
+}
+
+.profile-header-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  display: block;
+  opacity: 0.9;
+  z-index: -1;
+  background: #2989d8;
+  background: -moz-linear-gradient(left, #2989d8 0%, #1e5799 100%);
+  background: -webkit-linear-gradient(left, #2989d8 0%,#1e5799 100%);
+  background: linear-gradient(to right, #2989d8 0%,#1e5799 100%);
+}
+
+.profile-image {
+  width: 300px;
+}

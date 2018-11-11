@@ -29,6 +29,13 @@ class ProfileItem extends Component {
     }
   }
 
+  handleBlur = () => {
+    this.setState({
+      showInstruments: false,
+      showGenres: false
+    })
+  }
+
   renderDropdown = (items) => {
     return (
       <div className="profile-item-dropdown">
@@ -53,7 +60,7 @@ class ProfileItem extends Component {
             </div>
           </div>
         </Link>
-        <div className="profile-item-buttons">
+        <div className="profile-item-buttons" ref={n => this.node = n} onBlur={this.handleBlur}>
           { profile.instruments.length > 0 &&
             <button
               type="button"
