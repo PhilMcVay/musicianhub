@@ -1,21 +1,95 @@
 import React, { Component } from 'react'
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import ProfileWall from './ProfileWall'
 import '../../styles/components/ProfileAbout.css'
 
 class ProfileAbout extends Component {
+  renderInstruments = (instruments) => {
+    return (
+      <ul>
+        { instruments.map(instrument => <li>{instrument}</li>) }
+      </ul>
+    )
+  }
+
+  renderGenres = (genres) => {
+    return (
+      <ul>
+        { genres.map(genre => <li>{genre}</li>) }
+      </ul>
+    )
+  }
+
   render() {
+    const { profile } = this.props
+
     return (
       <div className="profile-about-container">
-        <h2>TODO: PROFILE ABOUT</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum sit eaque praesentium perferendis aliquam! Soluta explicabo eum possimus asperiores consectetur aliquam dolorem, dolor quas, nesciunt cumque magnam corrupti tempore molestiae!
-        Quis odio animi, aspernatur suscipit voluptatibus necessitatibus consequatur labore eius omnis facere iste libero, hic, optio sed harum cupiditate magni officia! Tempore, eos perferendis ea laborum dolore corporis unde totam!
-        Dicta rem expedita sapiente quam officiis iure consectetur iste unde. Nemo assumenda beatae saepe molestiae mollitia? Cum, explicabo quod sequi nesciunt, aspernatur sed in ducimus veritatis aut atque animi recusandae.
-        Eligendi, consequuntur aliquid! Fugit maxime dignissimos assumenda praesentium deserunt tenetur nulla veniam magnam molestiae? Alias consequuntur consectetur omnis, voluptatem qui voluptates asperiores accusamus quisquam delectus, natus blanditiis! Animi, unde ea.
-        Tempore, repellendus cum. Provident fugiat, perspiciatis, vero ipsam nam corporis quaerat porro molestias accusantium optio officia expedita ut vitae molestiae. Earum debitis repellendus id adipisci esse, blanditiis est deserunt voluptatem?
-        Doloribus ea, mollitia ratione ipsa ipsam labore! Laborum, dolorum molestias? Obcaecati nulla odit commodi et. In, magnam sed? Sunt eos accusamus perferendis, dicta totam possimus ut distinctio? Nisi, odit numquam!
-        Eos nihil ratione suscipit. Corporis molestias, dolore quam, neque minus enim nobis vel expedita necessitatibus tempora architecto praesentium magnam atque qui ipsa. Atque qui facere quisquam nam sapiente consectetur esse.
-        In dolore magnam molestiae sequi officia itaque esse necessitatibus consequuntur omnis quam pariatur consequatur tenetur aut velit modi autem, excepturi commodi rem nemo, harum doloribus blanditiis! Impedit non fuga debitis!
-        Voluptas numquam facilis nemo animi nostrum esse velit, itaque tenetur eaque tempora iusto quibusdam in fugiat possimus eos voluptatibus repudiandae ad consectetur voluptatem laboriosam hic minima explicabo omnis? Dolor, saepe!
-        Quo, illo? Ipsum iusto doloremque recusandae ab, ad, sequi dolor consequatur ea corporis tempora eligendi officia commodi incidunt expedita excepturi. Quae, dolore! Porro at eum voluptate sed inventore quia magnam.</p>
+        <Tabs>
+          <TabList>
+            <Tab>About</Tab>
+            <Tab>Wall</Tab>
+          </TabList>
+
+          <TabPanel className="profile-about-panel">
+            <section>
+              <h3>Age</h3>
+              { profile.age ? <p>{profile.age}</p> : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Gender</h3>
+              { profile.gender ? <p>{profile.gender}</p> : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Instruments</h3>
+              { profile.instruments.length ? this.renderInstruments(profile.instruments) : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Genres</h3>
+              { profile.genres.length ? this.renderGenres(profile.genres) : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Years of Playing Music</h3>
+              { profile.yearsPlayedMusic ? <p>{profile.yearsPlayedMusic}</p> : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Gigs Played</h3>
+              { profile.gigsPlayed ? <p>{profile.gigsPlayed}</p> : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Available to Gig</h3>
+              { profile.availableToGig ? <p>{profile.availableToGig}</p> : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Available to Rehearse</h3>
+              { profile.availableToRehearse ? <p>{profile.availableToRehearse}</p> : <p className="italic">No info</p> }
+            </section>
+            <section>
+              <h3>Looking For Band</h3>
+              { profile.lookingForBand
+                ? <img src={require("../../images/success.svg")} alt="True Image"/>
+                : <img src={require("../../images/error.svg")} alt="False Image"/>
+              }
+            </section>
+            <section>
+              <h3>Looking For Band Mates</h3>
+              { profile.lookingForBandmates
+                ? <img src={require("../../images/success.svg")} alt="True Image"/>
+                : <img src={require("../../images/error.svg")} alt="False Image"/>
+              }
+            </section>
+            <section>
+              <h3>Recording Experience</h3>
+              { profile.recordingExperience
+                ? <img src={require("../../images/success.svg")} alt="True Image"/>
+                : <img src={require("../../images/error.svg")} alt="False Image"/>
+              }
+            </section>
+          </TabPanel>
+          <TabPanel>
+            <ProfileWall />
+          </TabPanel>
+        </Tabs>
       </div>
     )
   }
