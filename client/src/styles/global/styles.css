@@ -136,4 +136,13 @@ span {
     padding: 0.7em 0;
   }
 
+  .button {
+    display: block;
+    margin-top: 40px;
+  }
+
+  .button-red {
+    margin-left: 0;
+  }
+
 }
