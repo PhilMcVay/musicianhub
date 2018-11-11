@@ -1,0 +1,19 @@
+.profile-bio-container {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 1px 4px 0 rgba(85,85,85,.3);
+}
+
+.profile-bio-container h2 {
+  color: #2c3e50;
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+.profile-bio-container p {
+  color: #777;
+  line-height: 1.4em;
+  letter-spacing: 0.05em;
+  font-weight: 100;
+  font-size: 14px;
+}

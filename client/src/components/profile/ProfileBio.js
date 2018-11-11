@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
+import '../../styles/components/ProfileBio.css'
 
 class ProfileBio extends Component {
   render() {
+    const { profile } = this.props
+
     return (
       <div className="profile-bio-container">
-        <h1>TODO: PROFILE BIO</h1>
+        <h2>Bio</h2>
+        { profile.bio ? <p>{profile.bio}</p> : <p>No bio information</p> }
       </div>
     )
   }

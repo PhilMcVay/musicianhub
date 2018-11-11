@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import ProfileHeader from './ProfileHeader'
 import ProfileBio from './ProfileBio'
 import ProfileAbout from './ProfileAbout'
-import ProfileWall from './ProfileWall'
 import Spinner from '../dashboard/Spinner'
 import { getProfileByHandle } from '../../actions/profileActions'
 
@@ -21,9 +20,10 @@ class Profile extends Component {
       return (
         <React.Fragment>
           <ProfileHeader profile={profile} />
-          <ProfileBio profile={profile} />
-          <ProfileAbout profile={profile} />
-          <ProfileWall profile={profile} />
+          <div className="profile-info-container">
+            <ProfileBio profile={profile} />
+            <ProfileAbout profile={profile} />
+          </div>
         </React.Fragment>
       )
     } else {

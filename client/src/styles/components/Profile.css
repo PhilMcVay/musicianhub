@@ -120,3 +120,11 @@
   font-weight: 100;
   cursor: pointer;
 }
+
+.profile-info-container {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}

@@ -23,3 +23,46 @@
 .profile-image {
   width: 300px;
 }
+
+.profile-title {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  padding-left: 20px;
+}
+
+.profile-header-info h1 {
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.profile-header-info h2 {
+  color: white;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+
+.profile-social {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 20px 25px;
+}
+
+.profile-social a {
+  font-size: 35px;
+  padding-right: 20px;
+  display: inline-block;
+}
+
+.profile-social a:last-of-type {
+  padding-right: 0;
+}
+
+.profile-social a:hover {
+  opacity: 0.8;
+  color: white;
+}
