@@ -7,7 +7,7 @@ class ProfileAbout extends Component {
   renderInstruments = (instruments) => {
     return (
       <ul>
-        { instruments.map(instrument => <li>{instrument}</li>) }
+        { instruments.map((instrument, index) => <li key={`genre ${index + 1}`}>{instrument}</li>) }
       </ul>
     )
   }
@@ -15,7 +15,7 @@ class ProfileAbout extends Component {
   renderGenres = (genres) => {
     return (
       <ul>
-        { genres.map(genre => <li>{genre}</li>) }
+        { genres.map((genre, index) => <li key={`genre ${index + 1}`}>{genre}</li>) }
       </ul>
     )
   }
@@ -67,22 +67,22 @@ class ProfileAbout extends Component {
             <section>
               <h3>Looking For Band</h3>
               { profile.lookingForBand
-                ? <img src={require("../../images/success.svg")} alt="True Image"/>
-                : <img src={require("../../images/error.svg")} alt="False Image"/>
+                ? <img src={require("../../images/success.svg")} alt="True"/>
+                : <img src={require("../../images/error.svg")} alt="False"/>
               }
             </section>
             <section>
               <h3>Looking For Band Mates</h3>
               { profile.lookingForBandmates
-                ? <img src={require("../../images/success.svg")} alt="True Image"/>
-                : <img src={require("../../images/error.svg")} alt="False Image"/>
+                ? <img src={require("../../images/success.svg")} alt="True"/>
+                : <img src={require("../../images/error.svg")} alt="False"/>
               }
             </section>
             <section>
               <h3>Recording Experience</h3>
               { profile.recordingExperience
-                ? <img src={require("../../images/success.svg")} alt="True Image"/>
-                : <img src={require("../../images/error.svg")} alt="False Image"/>
+                ? <img src={require("../../images/success.svg")} alt="True"/>
+                : <img src={require("../../images/error.svg")} alt="False"/>
               }
             </section>
           </TabPanel>

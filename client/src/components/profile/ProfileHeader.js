@@ -9,35 +9,35 @@ class ProfileHeader extends Component {
           <a
             href={profile.social.facebook}
             target="_blank">
-            <i class="fab fa-facebook-f"></i>
+            <i className="fab fa-facebook-f"></i>
           </a>
         }
         { profile.social.twitter &&
           <a
             href={profile.social.twitter}
             target="_blank">
-            <i class="fab fa-twitter"></i>
+            <i className="fab fa-twitter"></i>
           </a>
         }
         { profile.social.youtube &&
           <a
             href={profile.social.youtube}
             target="_blank">
-            <i class="fab fa-youtube"></i>
+            <i className="fab fa-youtube"></i>
           </a>
         }
         { profile.social.bandcamp &&
           <a
             href={profile.social.bandcamp}
             target="_blank">
-            <i class="fab fa-bandcamp"></i>
+            <i className="fab fa-bandcamp"></i>
           </a>
         }
         { profile.social.soundcloud &&
           <a
             href={profile.social.soundcloud}
             target="_blank">
-            <i class="fab fa-soundcloud"></i>
+            <i className="fab fa-soundcloud"></i>
           </a>
         }
       </React.Fragment>
@@ -61,7 +61,7 @@ class ProfileHeader extends Component {
               <a
                 href={profile.website}
                 target="_blank">
-                <i class="fas fa-globe"></i>
+                <i className="fas fa-globe"></i>
               </a>
             }
             { profile.social && this.renderSocial(profile) }

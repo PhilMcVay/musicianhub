@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 import ProfileHeader from './ProfileHeader'
 import ProfileBio from './ProfileBio'
 import ProfileAbout from './ProfileAbout'
