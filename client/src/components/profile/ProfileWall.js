@@ -7,22 +7,28 @@ import PostForm from '../posts/PostForm'
 class ProfileWall extends Component {
   render() {
     const { isAuthenticated } = this.props.auth
+    const { handle } = this.props.profile
+    const { posts } = this.props.post
+
+    const filteredPosts = posts.filter(post => post.relatedHandle === handle)
 
     return (
       <div className="profile-wall-container">
-        <Posts />
-        { isAuthenticated && <PostForm /> }
+        <Posts posts={filteredPosts}/>
+        { isAuthenticated && <PostForm handle={handle} /> }
       </div>
     )
   }
 }
 
 ProfileWall.propTypes = {
-  auth: PropTypes.object.isRequired
+  auth: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
-  auth: state.auth
+  auth: state.auth,
+  post: state.post
 })
 
 export default connect(mapStateToProps)(ProfileWall)

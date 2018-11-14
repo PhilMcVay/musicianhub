@@ -87,7 +87,7 @@ class ProfileAbout extends Component {
             </section>
           </TabPanel>
           <TabPanel>
-            <ProfileWall />
+            <ProfileWall profile={profile} />
           </TabPanel>
         </Tabs>
       </div>

@@ -6,12 +6,14 @@ import ProfileBio from './ProfileBio'
 import ProfileAbout from './ProfileAbout'
 import Spinner from '../dashboard/Spinner'
 import { getProfileByHandle } from '../../actions/profileActions'
+import { getPosts } from '../../actions/postActions'
 
 class Profile extends Component {
   componentDidMount() {
     if (this.props.match.params.handle) {
       this.props.getProfileByHandle(this.props.match.params.handle)
     }
+    this.props.getPosts()
   }
 
   renderProfile = (profile) => {
@@ -43,11 +45,13 @@ class Profile extends Component {
 
 Profile.propTypes = {
   getProfileByHandle: PropTypes.func.isRequired,
+  getPosts: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-  profile: state.profile
+  profile: state.profile,
+  post: state.post
 })
 
-export default connect(mapStateToProps, { getProfileByHandle })(Profile)
+export default connect(mapStateToProps, { getProfileByHandle, getPosts })(Profile)

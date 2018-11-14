@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import Spinner from '../dashboard/Spinner'
+import PostItem from './PostItem'
 
 class Posts extends Component {
   render() {
+    const { posts } = this.props
+
     return (
       <div className="feed">
-        <h1>Post Feed Component</h1>
+        { posts.map(post => <PostItem key={post._id} post={post}/>) }
       </div>
     )
   }
