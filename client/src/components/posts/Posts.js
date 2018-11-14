@@ -7,7 +7,11 @@ class Posts extends Component {
 
     return (
       <div className="feed">
-        { posts.map(post => <PostItem key={post._id} post={post}/>) }
+        {
+          posts.length
+            ? posts.map(post => <PostItem key={post._id} post={post}/>)
+            : <p className="italic">No posts</p>
+        }
       </div>
     )
   }

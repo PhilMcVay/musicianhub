@@ -10,7 +10,9 @@ class ProfileWall extends Component {
     const { handle } = this.props.profile
     const { posts } = this.props.post
 
-    const filteredPosts = posts.filter(post => post.relatedHandle === handle)
+    const filteredPosts = posts !== null
+      ? posts.filter(post => post.relatedHandle === handle)
+      : []
 
     return (
       <div className="profile-wall-container">

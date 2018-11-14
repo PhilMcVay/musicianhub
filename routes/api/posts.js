@@ -23,11 +23,11 @@ router.get('/', (req, res) => {
 // @route    GET api/posts/:id
 // @desc     Get post by ID
 // @access   Public
-router.get('/:id', (req, res) => {
-  Post.findById(req.params.id)
-    .then(post => res.json(post))
-    .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
-})
+// router.get('/:id', (req, res) => {
+//   Post.findById(req.params.id)
+//     .then(post => res.json(post))
+//     .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
+// })
 
 // @route    POST api/posts
 // @desc     Create post
@@ -117,47 +117,47 @@ router.post('/unlike/:post_id', passport.authenticate('jwt', { session: false })
 // @route    POST api/posts/comment/:post_id
 // @desc     Comment on a post
 // @access   Private
-router.post('/comment/:post_id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  const { errors, isValid } = validatePostInput(req.body)
-  // Check validation
-  if (!isValid) {
-    return res.status(400).json(errors)
-  }
-  Post.findById(req.params.post_id)
-    .then(post => {
-      const newComment = {
-        text: req.body.text,
-        name: req.body.name,
-        avatar: req.body.avatar,
-        user: req.user.id
-      }
-      // Add to comment array and save to the DB
-      post.comments.unshift(newComment)
-      post.save().then(post => res.json(post))
-    })
-    .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
-})
+// router.post('/comment/:post_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+//   const { errors, isValid } = validatePostInput(req.body)
+//   // Check validation
+//   if (!isValid) {
+//     return res.status(400).json(errors)
+//   }
+//   Post.findById(req.params.post_id)
+//     .then(post => {
+//       const newComment = {
+//         text: req.body.text,
+//         name: req.body.name,
+//         avatar: req.body.avatar,
+//         user: req.user.id
+//       }
+//       // Add to comment array and save to the DB
+//       post.comments.unshift(newComment)
+//       post.save().then(post => res.json(post))
+//     })
+//     .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
+// })
 
 // @route    DELETE api/posts/comment/:post_id/:comment_id
 // @desc     Delete a comment from a post
 // @access   Private
-router.delete('/comment/:post_id/:comment_id', passport.authenticate('jwt', { session: false }), (req, res) => {
-  Post.findById(req.params.post_id)
-    .then(post => {
-      // Check to see if comment exists
-      if (post.comments.find(comment => comment._id.toString() === req.params.comment_id) === undefined) {
-        return res.status(404).json({ commentNotFound: 'Comment not found' })
-      }
-      // Get remove index
-      const removeIndex = post.comments
-        .map(comment => comment._id.toString())
-        .indexOf(req.params.comment_id)
-      // Remove from the comments array and save to the DB
-      post.comments.splice(removeIndex, 1)
-      post.save().then(post => res.json(post))
-    })
-    .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
-})
+// router.delete('/comment/:post_id/:comment_id', passport.authenticate('jwt', { session: false }), (req, res) => {
+//   Post.findById(req.params.post_id)
+//     .then(post => {
+//       // Check to see if comment exists
+//       if (post.comments.find(comment => comment._id.toString() === req.params.comment_id) === undefined) {
+//         return res.status(404).json({ commentNotFound: 'Comment not found' })
+//       }
+//       // Get remove index
+//       const removeIndex = post.comments
+//         .map(comment => comment._id.toString())
+//         .indexOf(req.params.comment_id)
+//       // Remove from the comments array and save to the DB
+//       post.comments.splice(removeIndex, 1)
+//       post.save().then(post => res.json(post))
+//     })
+//     .catch(error => res.status(404).json({ noPostFound: 'No post found with that ID' }))
+// })
 
 
 module.exports = router
