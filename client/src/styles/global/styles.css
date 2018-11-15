@@ -58,6 +58,7 @@ span {
   border: 2px solid;
   border-radius: 3px;
   font-weight: 400;
+  background: none;
 }
 
 .button-white {

@@ -55,3 +55,24 @@
   margin-top: 5px;
   background-color: white;
 }
+
+@media (max-width: 768px) {
+
+  .landing-text h1 {
+    font-size: 1.7em;
+  }
+
+}
+
+@media (max-width: 610px) {
+
+  .tag-container {
+    display: block;
+    text-align: center;
+  }
+
+  .line {
+    display: none;
+  }
+
+}

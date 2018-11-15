@@ -31,3 +31,11 @@
   transform: translateX(0);
   opacity: 1;
 }
+
+@media (max-width: 768px) {
+
+  .main-nav li:last-of-type {
+    padding-right: 10px;
+  }
+
+}

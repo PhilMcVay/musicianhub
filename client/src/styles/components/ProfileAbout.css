@@ -86,3 +86,11 @@
 .react-tabs__tab--selected {
   opacity: 1;
 }
+
+@media (max-width: 600px) {
+
+  .profile-about-panel {
+    grid-template-columns: 1fr;
+  }
+
+}

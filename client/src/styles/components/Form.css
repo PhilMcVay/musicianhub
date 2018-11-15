@@ -224,3 +224,19 @@ button {
 button:focus {
   outline: none;
 }
+
+@media (max-width: 768px) {
+
+  .form-body {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-full-width {
+    grid-column: 1;
+  }
+
+  .react-tagsinput-tag {
+    margin-bottom: 5px;
+  }
+
+}

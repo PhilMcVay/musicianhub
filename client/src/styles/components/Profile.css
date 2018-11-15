@@ -55,7 +55,6 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 1;
   padding: 10px;
 }
 
@@ -101,6 +100,7 @@
   position: absolute;
   top: 100%;
   left: 0;
+  z-index: 1;
   background-color: #2c3e50;
   padding: 7px;
   box-shadow: 0 1px 4px 0 rgba(85,85,85,.3);
@@ -127,4 +127,24 @@
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto;
   grid-gap: 20px;
+}
+
+@media (max-width: 768px) {
+
+  .profiles-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .profile-info-container {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media (max-width: 414px) {
+
+  .profiles-grid {
+    grid-template-columns: 1fr;
+  }
+
 }

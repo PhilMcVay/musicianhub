@@ -66,3 +66,22 @@
   opacity: 0.8;
   color: white;
 }
+
+@media (max-width: 690px) {
+
+  .profile-image {
+    width: 100%;
+  }
+
+  .profile-social {
+    position: static;
+    text-align: center;
+  }
+
+  .profile-title {
+    position: static;
+    text-align: center;
+    padding-left: 0;
+  }
+
+}
