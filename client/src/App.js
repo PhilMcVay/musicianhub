@@ -7,6 +7,7 @@ import { clearCurrentProfile } from './actions/profileActions'
 import { Provider } from 'react-redux'
 import store from './store'
 import PrivateRoute from './components/PrivateRoute'
+import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/layout/Navbar'
 import Landing from './components/layout/Landing'
 import Register from './components/auth/Register'
@@ -42,25 +43,27 @@ class App extends Component {
     return (
       <Provider store={ store }>
         <Router>
-          <div className="App">
-            <Navbar />
-            <Route exact path="/" component={ Landing } />
-            <div className="max-width">
-              <Route exact path="/register" component={ Register } />
-              <Route exact path="/login" component={ Login } />
-              <Route exact path="/profiles" component={ Profiles } />
-              <Route path="/profile/:handle" component={ Profile } />
-              <Switch>
-                <PrivateRoute exact path="/dashboard" component={ Dashboard } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
-              </Switch>
-              <Switch>
-                <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
-              </Switch>
+          <ScrollToTop>
+            <div className="App">
+              <Navbar />
+              <Route exact path="/" component={ Landing } />
+              <div className="max-width">
+                <Route exact path="/register" component={ Register } />
+                <Route exact path="/login" component={ Login } />
+                <Route exact path="/profiles" component={ Profiles } />
+                <Route path="/profile/:handle" component={ Profile } />
+                <Switch>
+                  <PrivateRoute exact path="/dashboard" component={ Dashboard } />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path="/create-profile" component={ CreateProfile } />
+                </Switch>
+                <Switch>
+                  <PrivateRoute exact path="/edit-profile" component={ EditProfile } />
+                </Switch>
+              </div>
             </div>
-          </div>
+          </ScrollToTop>
         </Router>
       </Provider>
     )

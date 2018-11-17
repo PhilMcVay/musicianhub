@@ -38,6 +38,12 @@ class Navbar extends Component {
     window.addEventListener("resize", this.updateWindowWidth)
   }
 
+  componentDidUpdate() {
+    this.state.mobileMenuActive
+      ? document.body.classList.add("no-scroll")
+      : document.body.classList.remove("no-scroll")
+  }
+
   render() {
     const { isAuthenticated, user } = this.props.auth
 

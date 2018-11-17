@@ -3,6 +3,10 @@ body {
   background-color: #f4f4f4;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .max-width {
   max-width: 1366px;
   margin: 0 auto;
