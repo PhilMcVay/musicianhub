@@ -18,6 +18,7 @@ class Dashboard extends Component {
       return (
         <React.Fragment>
           <h1 className="dashboard-header">Hi {firstName}!</h1>
+          <Link to={`/profile/${profile.handle}`} className="button button-blue inline-block">View Profile</Link>
           <Link to="/edit-profile" className="button button-blue inline-block">Edit Profile</Link>
           <a href="#" onClick={this.handleDeleteAccount} className="button button-red inline-block">Delete Account</a>
         </React.Fragment>

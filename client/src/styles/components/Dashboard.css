@@ -8,6 +8,10 @@
   color: #2c3e50;
 }
 
+.dashboard-container :nth-child(3) {
+  margin-left: 10px;
+}
+
 .spinner-container {
   min-height: calc(100vh - 98px);
   display: flex;
@@ -17,4 +21,12 @@
 
 .spinner {
   max-width: 200px;
+}
+
+@media (max-width: 768px) {
+
+  .dashboard-container :nth-child(3) {
+    margin-left: 0;
+  }
+
 }
