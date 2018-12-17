@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import ProfileHeader from './ProfileHeader'
 import ProfileBio from './ProfileBio'
@@ -20,6 +21,10 @@ class Profile extends Component {
     if (profile) {
       return (
         <React.Fragment>
+          <Link className="back-cta" to="/profiles">
+            <img src={require('../../images/left-arrow.svg')} alt="Back Arrow"/>
+            Back to Musicians
+          </Link>
           <ProfileHeader profile={profile} />
           <div className="profile-info-container">
             <ProfileBio profile={profile} />
