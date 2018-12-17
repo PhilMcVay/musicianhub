@@ -4,6 +4,10 @@
   padding: 20px 20px;
 }
 
+.search-container {
+  display: inline-block;
+}
+
 .back-cta {
   display: inline-flex;
   align-items: center;

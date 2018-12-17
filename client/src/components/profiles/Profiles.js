@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Spinner from '../dashboard/Spinner'
+import Search from './Search'
 import ProfileItem from './ProfileItem'
 import { getProfiles } from '../../actions/profileActions'
 import '../../styles/components/Profile.css'
@@ -16,7 +17,6 @@ class Profiles extends Component {
     if (profiles.length > 0) {
       return (
         <React.Fragment>
-          <h1 className="profiles-header">Musicians</h1>
           <div className="profiles-grid">
             { profiles.map(profile => <ProfileItem key={profile._id} profile={profile} />) }
           </div>
@@ -28,11 +28,13 @@ class Profiles extends Component {
   }
 
   render() {
-    const { profiles, isLoading } = this.props.profile
+    const { filteredProfiles, isLoading } = this.props.profile
 
     return (
       <div className="profiles-container max-width-profile">
-        { profiles === null || isLoading ? <Spinner /> : this.renderProfiles(profiles) }
+        <h1 className="profiles-header">Musicians</h1>
+        <Search />
+        { filteredProfiles === null || isLoading ? <Spinner /> : this.renderProfiles(filteredProfiles) }
       </div>
     )
   }

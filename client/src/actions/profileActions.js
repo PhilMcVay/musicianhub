@@ -4,7 +4,8 @@ import {
   CLEAR_CURRENT_PROFILE,
   GET_PROFILES,
   GET_ERRORS,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  FILTER_PROFILES
 } from './types'
 import axios from 'axios'
 
@@ -94,6 +95,14 @@ export function getProfiles() {
         })
       })
   }
+}
+
+// Filter Profiles
+export const filterProfiles = (input) => dispatch => {
+  dispatch({
+    type: FILTER_PROFILES,
+    payload: input
+  })
 }
 
 // Delete Account
